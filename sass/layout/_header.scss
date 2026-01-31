@@ -1,0 +1,71 @@
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+header {
+    margin-top: 20px;
+
+    @include m.breakpoint(tablet) {
+        margin-top: 29px;    
+    }
+    @include m.breakpoint(desktop) {
+        margin-top: 39px;    
+    }
+
+    // imagen decorativa
+    &::after {
+        content: '';
+        position: absolute;
+        top: 120px;
+        left: -270px;
+        width: 530px;
+        height: 129px;
+        background: url('/img/ellipses-background-right.svg') no-repeat center / contain;
+        pointer-events: none;
+        z-index: -2;
+
+        @include m.breakpoint(tablet) {
+            top: 60px;
+            left: -200px;
+        }
+        @include m.breakpoint(desktop) {
+            top: 95px;
+            left: -50px;
+        }
+    }
+
+    .profile-photo {
+        background-image: url('/img/profile-photo-mobile.png');
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 174px;
+        height: 383px;
+
+        z-index: -1;
+
+        // Tablet
+        @include m.breakpoint(tablet) {
+            background-image: url('/img/profile-photo-tablet.png');
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            left: auto;
+            transform: none; 
+
+
+            width: 322px;
+            height: 600px;
+        }
+
+        // Desktop
+        @include m.breakpoint(desktop) {
+            background-image: url('/img/profile-photo-desktop.png');
+            top: -39px;
+            width: 445px;
+            height: 720px;
+        }
+    }
+}

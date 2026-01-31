@@ -1,0 +1,47 @@
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.site-bar {
+    display: flex;
+    flex-direction: column; // row(por defecto) | row-reverse | column | column-reverse
+    align-items: center; // stretch(por defecto) | flex-start | flex-end | center | baseline 
+    gap: 20px;
+
+    @include m.breakpoint(tablet) {
+        display: flex;
+        flex-direction: row; // row(por defecto) | row-reverse | column | column-reverse 
+        justify-content: space-between; // flex-start(por defecto) | flex-end | center | space-between | space-around | space-evenly 
+        align-items: center; // stretch(por defecto) | flex-start | flex-end | center | baseline 
+    }
+
+    .logo {
+        @include m.breakpoint(tablet) {
+            width: 172px;
+        }
+    }
+
+    ul {
+        display: flex;
+        align-items: center; // stretch(por defecto) | flex-start | flex-end | center | baseline 
+        list-style: none; // elimina el marcador "•" de la lista 
+        gap: 26px;
+
+        @include m.breakpoint(desktop) {
+            margin-right: 30px;
+        }
+
+        .icon {
+            width: 22px;
+            color: v.$white;
+            
+            @include m.breakpoint(tablet) {
+                width: 28px;
+            }
+            &:hover {
+                color: v.$green;
+            }
+        }
+    }
+}
+

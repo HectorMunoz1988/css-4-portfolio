@@ -1,0 +1,141 @@
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.contact {
+    background-color: v.$grey;
+    text-align: center;
+
+    &__flex {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include m.breakpoint(tablet) {
+            justify-content: space-between;
+            gap: 56px;
+        }
+
+        @include m.breakpoint(desktop) {
+            flex-direction: row;
+            padding-top: 84px;
+            align-items: flex-start;
+        }
+
+        h2 {
+            padding-top: 60px;
+            font-weight: 700;
+            font-size: 40px;
+            line-height: 40px;
+            letter-spacing: -2.5px;
+
+            @include m.breakpoint(tablet) {
+                font-size: 72px;
+                line-height: 72px;
+            }
+
+            @include m.breakpoint(desktop) {
+                margin: 0;
+                padding-top: 0;
+                font-size: 88px;
+                line-height: 88px;
+                text-align: left;
+            }
+        }
+
+        p {
+            margin-top: 20px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 26px;
+            color: v.$light-grey;
+            max-width: 445px;
+
+            @include m.breakpoint(tablet) {
+                font-size: 18px;
+                line-height: 28px;
+                
+            }
+
+            @include m.breakpoint(desktop) {
+                margin-top: 36px;
+                text-align: left;
+            }
+        }
+
+        form {
+            margin-top: 48px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 32px;
+            width: 100%;
+            max-width: 445px;
+
+            @include m.breakpoint(desktop) {
+                margin-top: 0;
+            }
+
+            .form-field {
+                width: 100%;
+                position: relative;
+
+                .form-input {
+                    padding: 0 0 16px 24px;
+                    width: 100%;
+                    background: transparent;
+                    border: none;
+                    border-bottom: 1px solid v.$white;
+                    outline: none;
+                    color: v.$light-grey;
+                    font-size: 16px;
+                    line-height: 26px;
+                    font-weight: 500;
+                    font-family: v.$primary-font;
+                    resize: none;
+
+                    &:focus {
+                        border-bottom: 1px solid v.$green;
+                    }
+
+                    &:invalid:not(:placeholder-shown) {
+                        border-bottom: 1px solid v.$red;
+
+                        ~ .error-icon,
+                        ~ .error-message {
+                            display: block;
+                        }
+                    }
+                }
+
+                .error-icon {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    bottom: 18px;
+                    width: 20px;
+                    height: 20px;
+                }
+
+                .error-message {
+                    display: none;
+                    position: absolute;
+                    right: 0;
+                    bottom: -27px;
+                    font-size: 12px;
+                    color: v.$red;
+                    text-align: right;
+                }
+            }
+
+            .btn-primary {
+                margin-left: auto;
+                margin-bottom: 87px;
+                background-color: v.$grey;
+
+                @include m.breakpoint(tablet) {
+                margin-bottom: 92px;
+                }
+            }
+        }
+    }
+}

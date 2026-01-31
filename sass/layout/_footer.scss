@@ -1,0 +1,55 @@
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.footer {
+    background-color: v.$grey;
+    padding: 0px 0px 60px 0px;
+    position: relative;
+
+    @include m.breakpoint(tablet) {
+        padding: 0px 0px 40px 0px;
+    }
+    @include m.breakpoint(desktop) {
+        padding: 0px 0px 92px 0px;
+    }
+
+    // imagen decorativa
+    &::after {
+        content: '';
+        position: absolute;
+        top: -240px;
+        left: -270px;
+        width: 530px;
+        height: 129px;
+        background: url('/img/ellipses-background-right.svg') no-repeat center / contain;
+        pointer-events: none;
+        z-index: 0;
+        @include m.breakpoint(tablet) {
+            top: -160px;
+            left: -200px;
+        }
+        @include m.breakpoint(desktop) {
+            left: -50px;
+        }
+    }
+
+    &::before {
+        content: "";
+        display: block;
+        height: 1px;
+        background-color: v.$white;
+        width: calc(100% - 32px);
+        margin: 0 auto 39px auto; 
+
+        @include m.breakpoint(tablet) {
+            width: calc(100% - 60px);
+            margin-bottom: 30px;
+        }
+
+        @include m.breakpoint(desktop) {
+            width: 1110px;
+            margin: 0 auto 47px auto;
+        }
+    }
+}

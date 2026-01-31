@@ -1,0 +1,118 @@
+
+@use '../abstracts/variables' as v;
+@use '../abstracts/mixins' as m;
+
+.hero {
+    margin-top: 331px;
+    text-align: center; // left | right | center | justify | start | end
+    position: relative;
+
+    @include m.breakpoint(tablet) {
+        margin-top: 90px;
+        text-align: left; // left | right | center | justify | start | end
+    }
+    @include m.breakpoint(desktop) {
+        margin-top: 127px;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: -170px;
+        right: 0px;
+        width: 65px;
+        height: 129px;
+        background: url('/img/semicircle-background.png') no-repeat center / contain;
+        pointer-events: none;
+        z-index: 4;
+        @include m.breakpoint(tablet) {
+            top: 318px;
+        }
+        @include m.breakpoint(desktop) {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(calc(-50% + 110px), calc(-50% + 65px));
+            width: 129px;
+            height: 129px; 
+            background: url('/img/circle-background.png') no-repeat center / contain;
+        }
+    }
+
+    .hero__title {
+        font-weight: 700; // 200, 300, normal(400), 500, 600, bold(700), 800, 900/
+        font-size: 40px;
+        line-height: 40px;
+        max-width: 343px;
+        margin: 0px auto 0px auto;
+        letter-spacing: -2.5px;
+
+        @include m.breakpoint(tablet) {
+            margin-left: 0px;
+            text-align: left;
+            max-width: 480px;
+            font-size: 72px;
+            line-height: 72px;            
+        }
+        @include m.breakpoint(desktop) {
+            max-width: 760px;
+            font-size: 88px;
+            line-height: 88px;
+        }
+
+        .tablet-line-break {
+            display: none;
+            @include m.breakpoint(tablet) {
+                display: inline;            
+            }
+            @include m.breakpoint(desktop) {
+                display: none;            
+            }
+        }
+
+        .underlined {
+            background-image: linear-gradient(v.$green, v.$green);
+            background-repeat: no-repeat;
+            background-size: 100% 4px;
+            background-position: 0 100%;
+
+            @include m.breakpoint(tablet) {
+                background-size: 100% 6px;
+            }
+        }
+    }
+
+    .hero__subtitle{
+        font-weight: 500; // 200, 300, normal(400), 500, 600, bold(700), 800, 900
+        font-size: 16px;
+        line-height: 26px;
+        padding: 0px 20px;
+        color: v.$light-grey;
+        max-width: 343px;
+        margin: 24px auto 0px auto;
+        
+        @include m.breakpoint(tablet) {
+            margin: 60px auto 0px 0px;
+            text-align: left;
+            max-width: 420px;
+            padding-left: 0px;         
+            padding-right: 40px;
+        }
+        @include m.breakpoint(desktop) {
+            margin-top: 43px;
+            
+        }
+    }
+
+    .btn-primary {
+        margin: 24px 0px 80px 0px;
+
+        @include m.breakpoint(tablet) {
+            margin: 34px 0px 60px 0px;
+        }
+        @include m.breakpoint(desktop) {
+            margin: 66px 0px 219px 0px;
+        }
+    }
+
+}
